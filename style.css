@@ -2,13 +2,15 @@
 
 body {
     background: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%)) no-repeat;
-    background-size: 300% 300%;
+    background-size: 100% 200%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     font-family: 'Kumbh Sans', sans-serif;
+    font-size: 13px;
+    color: hsl(238, 29%, 16%);
 }
 
 main {
@@ -23,20 +25,49 @@ main {
     transform: translate(0, 40%);
 }
 
-#box {
-    height: 170px;
-    width: 170px;
+@media (max-width: 1110px) {
+    main {
+        flex-direction: column;
+        padding: 0 30px;
+        width: 375px;
+        height: 580px;
+        transform: translate(0%, 30%);
+        background: white url("images/bg-pattern-mobile.svg") no-repeat top;
+        background-size: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    main {
+        transform: translate(5%, 20%);
+    }
+}
+
+.box {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-340%, -20%);
     animation-name: box_animation;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
 }
 
+.box img {
+    height: 170px;
+    width: 170px;
+}
+
+@media (max-width: 1110px) {
+    .box img {
+        height: 120px;
+        width: 120px;
+        transform: translate(180%, -225%);
+    }
+}
+
 @keyframes box_animation {
-    0% { transform: translate(-340%, -20%) }
+    0% { transform: translate(-340%, -20%)}
     50% { transform: translate(-340%, -40%) }
     100% { transform: translate(-340%, -20%) }
 }
@@ -51,8 +82,28 @@ main {
 .desktop img {
     transform: translate(-20%);
     animation-name: desktop_animation;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
+}
+
+@media (max-width: 1110px) {
+    .desktop {
+        text-align: center;
+        transform: translate(0%, -30%);
+        overflow: visible;
+    }
+
+    .desktop img {
+        width: 400px;
+        height: 250px;
+        animation-name: desktop_animation_mobile;
+    }
+
+    @keyframes desktop_animation_mobile {
+        0% { transform: translate(0%,-10%) }
+        50% { transform: translate(0%) }
+        100% { transform: translate(0%,-10%) }
+    }
 }
 
 @keyframes desktop_animation {
@@ -66,6 +117,17 @@ main {
     margin-bottom: 7%;
 }
 
+.content h1{
+    font-size: 30px;
+}
+
+@media (max-width: 1110px) {
+    .content h1 {
+        text-align: center;
+        margin-top: -20%;
+    }
+}
+
 .all_faqs {
     width: 350px;
     height: 300px;
@@ -75,4 +137,36 @@ main {
 .all_faqs::-webkit-scrollbar {
     width: 0;
     background: transparent;
+}
+
+.faq > .question {
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    list-style: none;
+}
+
+.question::before {
+    content: url("images/icon-arrow-down.svg");
+    float: right;
+    position: center;
+    padding-right: 20px;
+}
+
+details[open] .question::before {
+    content: url("images/icon-arrow-down.svg");
+    transform: translate(-65%) rotate(180deg);
+}
+
+hr {
+    border: 1px solid hsl(240, 5%, 91%);
+    border-radius: 10px;
+}
+
+.faq .question:hover {
+    color: hsl(14, 88%, 65%);
+}
+
+.faq .answer {
+    color: hsl(240, 6%, 50%);
 }
