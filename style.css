@@ -141,7 +141,7 @@ main {
     background: transparent;
 }
 
-.faq > .question {
+.faq .question {
     cursor: pointer;
     padding-bottom: 10px;
     padding-top: 10px;
